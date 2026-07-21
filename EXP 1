@@ -1,0 +1,153 @@
+
+SQL*Plus: Release 11.2.0.1.0 Production on Tue Jul 21 04:51:04 2026
+
+Copyright (c) 1982, 2010, Oracle.  All rights reserved.
+
+Enter user-name: A003@db2021
+Enter password:
+
+Connected to:
+Oracle Database 11g Release 11.2.0.1.0 - Production
+
+SQL> Create Table Metals(Metno Number(4),
+  2  Gold Varchar2(15),Salary Number(7,2),
+  3  Silver Number(5),Design Varchar2(10),
+  4  Platinum Number(2));
+
+Table created.
+
+SQL> Desc Metal
+ERROR:
+ORA-04043: object Metal does not exist
+
+
+SQL> Desc Employee
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ EMPNO                                              NUMBER(4)
+ ENAME                                              VARCHAR2(15)
+ SALARY                                             NUMBER(7,2)
+ COMM                                               NUMBER(5)
+ DESIGN                                             VARCHAR2(10)
+ DEPTNO                                             NUMBER(2)
+
+SQL> Desc Student
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ STUNO                                              NUMBER(4)
+ AJSP                                               VARCHAR2(15)
+ SALARY                                             NUMBER(7,2)
+ DHANUNJAY                                          NUMBER(5)
+ DESIGN                                             VARCHAR2(10)
+ SATYADEV                                           NUMBER(2)
+
+SQL> Desc Metals
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ METNO                                              NUMBER(4)
+ GOLD                                               VARCHAR2(15)
+ SALARY                                             NUMBER(7,2)
+ SILVER                                             NUMBER(5)
+ DESIGN                                             VARCHAR2(10)
+ PLATINUM                                           NUMBER(2)
+
+SQL> Create Table Emp1 as Select
+  2  Select * from Emp;
+Select * from Emp
+*
+ERROR at line 2:
+ORA-00936: missing expression
+
+
+SQL> Create Table Emp1 as Select * from
+  2
+SQL> Create Table Emp1 as
+  2  Select * from Emp;
+Select * from Emp
+              *
+ERROR at line 2:
+ORA-00942: table or view does not exist
+
+
+SQL> Create Table Emp1 as
+  2  Select * from Employee
+  3
+SQL> CREATE TABLE Emp1 AS
+  2  SELECT * FROM Emp;
+SELECT * FROM Emp
+              *
+ERROR at line 2:
+ORA-00942: table or view does not exist
+
+
+SQL> Create Table Emp1 as
+  2  Select * from Employee
+  3  ;
+
+Table created.
+
+SQL> Desc Emp1
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ EMPNO                                              NUMBER(4)
+ ENAME                                              VARCHAR2(15)
+ SALARY                                             NUMBER(7,2)
+ COMM                                               NUMBER(5)
+ DESIGN                                             VARCHAR2(10)
+ DEPTNO                                             NUMBER(2)
+
+SQL> Create Table Stu1 as Select * from Student;
+
+Table created.
+
+SQL> Desc Stu1
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ STUNO                                              NUMBER(4)
+ AJSP                                               VARCHAR2(15)
+ SALARY                                             NUMBER(7,2)
+ DHANUNJAY                                          NUMBER(5)
+ DESIGN                                             VARCHAR2(10)
+ SATYADEV                                           NUMBER(2)
+
+SQL> Create Table Met1 as Select * from Metals;
+
+Table created.
+
+SQL> Desc Metals
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ METNO                                              NUMBER(4)
+ GOLD                                               VARCHAR2(15)
+ SALARY                                             NUMBER(7,2)
+ SILVER                                             NUMBER(5)
+ DESIGN                                             VARCHAR2(10)
+ PLATINUM                                           NUMBER(2)
+
+SQL> Create Table Emp1 as Select Empno,Ename,Sal,Deptno from Emp;
+Create Table Emp1 as Select Empno,Ename,Sal,Deptno from Emp
+                                                        *
+ERROR at line 1:
+ORA-00942: table or view does not exist
+
+
+SQL> Create Table Emp1 as
+  2  Select Empno,Ename,
+  3  Sal,Deptno from
+  4  Emp;
+Emp
+*
+ERROR at line 4:
+ORA-00942: table or view does not exist
+
+
+SQL> Create Table
+  2  Emp1 as Select Empno,Ename,
+  3  Sal,Deptno from Employee;
+Sal,Deptno from Employee
+*
+ERROR at line 3:
+ORA-00904: "SAL": invalid identifier
+
+
+SQL>
